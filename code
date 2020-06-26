@@ -25,3 +25,17 @@ df%>%
 arrange(desc(B_Pop))%>%
 select(State,County,Income, Unemployment, B_Pop, TotalPop)%>%
 head(6)
+
+df%>%
+arrange(desc(Black)%>%
+select(State,County,Income, Unemployment, B_Pop, TotalPop)%>%
+head(6)
+
+install.packages("ggpubr")
+library(ggplot2)
+library(ggpubr)
+
+ggqqplot(df$Unemployment)
+shapiro.test(df$Unemployment)
+
+
