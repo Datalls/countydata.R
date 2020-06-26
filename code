@@ -1,0 +1,27 @@
+library(dplyr)
+
+setwd("~/desktop/datasource/")
+df<-read.csv(file="county_data")
+df1<-select(df,Hispanic, White, Black, Native,Asian, Pacific)
+df2<-select(df,Citizen:Poverty)
+
+c1<-cor(df1)
+c2<-cor(df2)
+
+install.packages("corrplot")
+library(corrplot)
+
+corrplot(c1,method="color")
+corrplot(c2,method="color")
+
+df%>%
+select(White)%>%
+table()%>%
+barplot()
+
+df$B_Pop<-round(df$Black*df$TotalPop/100,digits=0)
+
+df%>%
+arrange(desc(B_Pop))%>%
+select(State,County,Income, Unemployment, B_Pop, TotalPop)%>%
+head(6)
