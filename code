@@ -41,7 +41,6 @@ shapiro.test(df$Unemployment)
 plot(density(df$White),main="Density Plot: White",ylab="Frequency",sub=paste("Skewness:",round(e1071::skewness(df$White),2)))
 polygon(density(df$White),col="red")
 
-library(dplyr)
 dfAL<-df%>%
 filter(State=="Alabama")
 
